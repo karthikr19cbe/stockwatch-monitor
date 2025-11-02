@@ -185,6 +185,9 @@ def monitor_loop():
                 print(f"[NEW] Found {len(new_updates)} new update(s)!")
                 print()
 
+                # Reverse order so oldest messages are sent first (latest appears last in Telegram)
+                new_updates.reverse()
+
                 for idx, update in enumerate(new_updates, 1):
                     print(f"  [{idx}] {update['company']}")
                     print(f"      {update['title'][:80]}...")
