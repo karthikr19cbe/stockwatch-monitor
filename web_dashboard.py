@@ -274,8 +274,13 @@ def dashboard():
     update_status()
     
     # Get the base URL for the health endpoint
-    base_url = os.getenv('REPL_SLUG', 'your-repl-name')
-    base_domain = f"https://{base_url}.replit.app"
+    domains = os.getenv('REPLIT_DOMAINS', '')
+    if domains:
+        base_domain = f"https://{domains.split(',')[0]}"
+    else:
+        repl_slug = os.getenv('REPL_SLUG', 'your-repl')
+        repl_owner = os.getenv('REPL_OWNER', 'username')
+        base_domain = f"https://{repl_slug}-{repl_owner}.replit.app"
     
     return render_template_string(
         DASHBOARD_HTML,
