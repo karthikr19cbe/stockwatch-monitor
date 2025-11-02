@@ -7,7 +7,8 @@ import os
 import sys
 
 # Replit-specific: Ensure stdout is unbuffered for real-time logs
-sys.stdout.reconfigure(line_buffering=True)
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(line_buffering=True)  # type: ignore
 
 # Import keep_alive to run web server (keeps Replit alive)
 from keep_alive import keep_alive

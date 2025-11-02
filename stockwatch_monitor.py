@@ -59,7 +59,8 @@ def scrape_live_updates():
         updates = []
 
         # Find all news links with newsId parameter
-        news_items = soup.find_all('a', href=lambda x: x and 'newsId=' in str(x))
+        all_links = soup.find_all('a', href=True)
+        news_items = [link for link in all_links if 'newsId=' in str(link.get('href', ''))]
 
         for item in news_items:
             try:
