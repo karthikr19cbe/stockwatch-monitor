@@ -10,9 +10,6 @@ import sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(line_buffering=True)  # type: ignore
 
-# Import keep_alive to run web server (keeps Replit alive)
-from keep_alive import keep_alive
-
 # Import the monitor
 from stockwatch_monitor import monitor_loop
 
@@ -27,10 +24,9 @@ if __name__ == "__main__":
     print("  - TELEGRAM_CHAT_ID")
     print()
 
-    # Start keep-alive web server
-    print("Starting keep-alive web server on port 8080...")
-    keep_alive()
-    print("✓ Web server started")
+    # Keep-alive web server disabled to avoid port conflicts
+    # The monitor runs continuously without needing a web server
+    print("Note: Monitor runs in console mode (no web server needed)")
     print()
 
     print("Starting monitor...")
