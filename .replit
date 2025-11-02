@@ -6,8 +6,8 @@ modules = ["nodejs-20", "python-3.11"]
 channel = "stable-24_05"
 
 [deployment]
-run = ["sh", "-c", "python main.py"]
-deploymentTarget = "cloudrun"
+run = ["python", "main.py"]
+deploymentTarget = "vm"
 
 [[ports]]
 localPort = 5000
